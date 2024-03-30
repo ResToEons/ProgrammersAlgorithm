@@ -3,18 +3,18 @@
 
 using namespace std;
 
-int solution(int n) {
-    int answer = 0;
-
-    for (int i = 1; n >= i; i++)
+vector<int> solution(long long n) {
+    vector<int> answer;
+    int num;
+    
+    while (n != 0)
     {
-        if (n % i == 1)
-        {
-            answer = i;
-
-            break;
-        }
+        num = n % 10;
+        
+        answer.push_back(num);
+        
+        n /= 10;
     }
-
+    
     return answer;
 }
