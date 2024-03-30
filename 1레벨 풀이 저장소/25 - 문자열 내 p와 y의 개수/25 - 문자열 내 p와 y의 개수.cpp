@@ -1,26 +1,28 @@
+#include <string>
 #include <iostream>
-#include <cstring>
+using namespace std;
 
-int main()
+bool solution(string s)
 {
-	char arr[5][15];
-	int maxLength = 0;
+    int pCnt = 0, yCnt = 0;
+    bool answer = true;
 
-	for (int i = 0; 5 > i; i++)
-		std::cin.getline(arr[i], 16);
+    for (int i = 0; s.length() > i; i++)
+    {
+        if (s[i] == 'p' || s[i] == 'P')
+            pCnt++;
+        else if (s[i] == 'y' || s[i] == 'Y')
+            yCnt++;
+        else
+        {
+            // Do Nothing
+        }
+    }
 
-	for (int i = 0; 15 > i; i++)
-	{
-		for (int j = 0; 5 > j; j++)
-		{
-			if (strlen(arr[j]) <= i)
-			{
-				continue;
-			}
-			else
-				std::cout << arr[j][i];
-		}
-	}
+    if (pCnt == yCnt)
+        answer = true;
+    else
+        answer = false;
 
-	return 0;
+    return answer;
 }
