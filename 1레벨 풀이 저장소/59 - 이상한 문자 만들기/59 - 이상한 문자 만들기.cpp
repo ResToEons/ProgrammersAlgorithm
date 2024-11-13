@@ -4,27 +4,47 @@
 
 using namespace std;
 
-int solution(string t, string p) {
+string solution(string s) {
+    string answer = "";
     string temp = "";
-    unsigned long long answer = 0;
-    unsigned long long pLength = p.length();
-    unsigned long long pLong = stoull(p);
-
-    for (unsigned long long i = 0; t.length() - p.length() + 1 > i; i++)
+    int cnt = 0;
+    vector<string> words;
+    vector<int> spaces;
+    
+    for (int i = 0; s.length() > i; i++)
     {
-        for (unsigned long long j = i; p.length() + i > j; j++)
-        {
-            temp += t[j];
+        if (s[i] == ' ')
+        {           
+            words.push_back(temp);
+            
+            temp = "";
         }
-        unsigned long long tempLong = stoull(temp);
-
-        if (pLong >= tempLong)
+        else
         {
-            answer++;
+            temp += s[i];        
         }
-
-        temp = "";
     }
-
+    
+    words.push_back(temp);
+    temp = "";
+    
+    for (int i = 0; words.size() > i; i++)
+    {
+        for (int j = 0; words[i].length() > j; j++)
+        {
+            if (j % 2 == 0)
+            {
+                answer += toupper(words[i][j]);
+            }
+            else
+            {
+                answer += tolower(words[i][j]);
+            }
+        }
+        answer += ' ';
+    }
+    
+    answer.pop_back();
+    
     return answer;
 }
